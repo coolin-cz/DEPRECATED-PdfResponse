@@ -27,7 +27,8 @@
         "nette/tester": "~2.2",
         "symfony/dom-crawler": "~2.5",
         "symfony/css-selector": "~2.5",
-        "latte/latte": "~2.5"
+	    "latte/latte": "~2.5",
+	    "phpstan/phpstan": "~0.11"
     },
     "extra": {
         "branch-alias": {
@@ -41,5 +42,10 @@
     "license": "LGPL-3.0",
     "autoload": {
         "classmap": ["src"]
+    },
+	"scripts": {
+		"phpstan": [
+			"vendor/bin/phpstan analyse -c phpstan.neon"
+		]
     }
 }

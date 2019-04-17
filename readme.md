@@ -5,16 +5,16 @@ PDF Response for Nette 2
 [![Latest Stable Version](https://poser.pugx.org/joseki/pdf-response/v/stable)](https://packagist.org/packages/joseki/pdf-response)
 [![Total Downloads](https://poser.pugx.org/joseki/pdf-response/downloads)](https://packagist.org/packages/joseki/pdf-response)
 
-- sends template as PDF output using mPDF library
-- works with Nette v2.2+
-- requires PHP 5.4 or higher
+- sends template as PDF output using mPDF (v8.0+) library
+- works with Nette v2.4+
+- requires PHP 7.1 or higher
 
 Install
 ---
 Installation via Composer.
 
 ```sh
-composer require joseki/pdf-response ">= 2.1"
+composer require joseki/pdf-response "dev-master"
 ```
 
 

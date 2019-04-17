@@ -110,10 +110,10 @@ class PdfResponse implements Nette\Application\IResponse{
 	/** @var string margins: top, right, bottom, left, header, footer */
 	private $pageMargins = "16,15,16,15,9,9";
 
-	/** @var Mpdf */
-	private $mPDF = null;
+	/** @var Mpdf|null */
+	private $mPDF;
 
-	/** @var  mPDF */
+	/** @var  mPDF|null */
 	private $generatedFile;
 
 	/************************************ properties **************************************/
@@ -134,7 +134,7 @@ class PdfResponse implements Nette\Application\IResponse{
 		$this->documentTitle = $documentTitle;
 	}
 
-	public function getDisplayZoom():string{
+	public function getDisplayZoom(){
 		return $this->displayZoom;
 	}
 
@@ -361,7 +361,6 @@ class PdfResponse implements Nette\Application\IResponse{
 	}
 
 
-
 	/*********************************** build **************************************/
 
 	/**
@@ -413,16 +412,18 @@ class PdfResponse implements Nette\Application\IResponse{
 		}
 
 		// copied from mPDF -> removes comments
-		$html = preg_replace('/<!--mpdf/i', '', $html);
-		$html = preg_replace('/mpdf-->/i', '', $html);
-		$html = preg_replace('/<\!\-\-.*?\-\->/s', '', $html);
+		$html = (string)preg_replace('/<!--mpdf/i', '', $html);
+		$html = (string)preg_replace('/mpdf-->/i', '', $html);
+		$html = (string)preg_replace('/<\!\-\-.*?\-\->/s', '', $html);
 
 		// @see: https://mpdf.github.io/reference/mpdf-functions/writehtml.html
 		if($this->ignoreStylesInHTMLDocument){
 			// deletes all <style> tags
 
 			$crawler = new Crawler($html);
-			foreach($crawler->filter('style') as $child){
+			/** @var \DOMElement[] $filter */
+			$filter = $crawler->filter('style');
+			foreach($filter as $child){
 				$child->parentNode->removeChild($child);
 			}
 			$html = $crawler->html();
