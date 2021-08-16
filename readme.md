@@ -1,5 +1,10 @@
-PDF Response for Nette 2
-===
+# DEPRECATED package - use Contributte/pdf
+
+https://github.com/contributte/pdf
+
+---
+
+## PDF Response for Nette 2
 
 [![Build Status](https://travis-ci.org/Joseki/PdfResponse.svg?branch=master)](https://travis-ci.org/Joseki/PdfResponse)
 [![Latest Stable Version](https://poser.pugx.org/joseki/pdf-response/v/stable)](https://packagist.org/packages/joseki/pdf-response)
